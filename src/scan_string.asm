@@ -21,9 +21,10 @@ scan_string:
     mov eax, 3
     mov ecx, edi
     mov edx, ebx
-    mov ebx, 0+
+    mov ebx, 0
     int 0x80
 
+    ; Devuelve la cantidad de bytes y con ese valor poner el terminar en 0 al final.
     mov esi, aex
     mov byte [edi + esi], 0
 
