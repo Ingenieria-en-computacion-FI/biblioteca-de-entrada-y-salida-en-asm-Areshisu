@@ -9,16 +9,22 @@ global print_char
 
 print_char:
 
+    ; Prólogo
     push ebp
     mov ebp, esp
 
-    ; TODO:
-    ; 1. Guardar el caracter en memoria
-    ; 2. Usar syscall write
-    ; 3. Imprimir 1 byte
+    ; Guardamos el caracter que viene de AL.
+    mov [char_buffer], al
 
-    ; write(fd=1, buffer, 1)
+    ; Preparamos para imprimir el caracter.
+    mov eax, 4
+    mov ebx, 1
+    mov ecx, char_buffer
+    mov edx, 1
 
+    int 0x80
+
+    ; Epílogo
     mov esp, ebp
     pop ebp
     ret
