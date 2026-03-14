@@ -26,6 +26,7 @@ contar:
     inc edx
     jmp  contar
 
+; Preparamos los registros para usar write e imprimir la cadena.
 imprimir
     mov ecx, ax,
     mov eax, 4
