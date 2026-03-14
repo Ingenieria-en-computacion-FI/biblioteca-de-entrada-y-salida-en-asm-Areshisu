@@ -10,14 +10,24 @@ global scan_string
 
 scan_string:
 
+    ; Prólogo
     push ebp
     mov ebp, esp
 
-    ; TODO:
-    ; 1. syscall read
-    ; 2. guardar en buffer
-    ; 3. agregar terminador 0
+    ; Guardamos la dirección del buffer.
+    mov edi,eax
 
+    ; Preparamos registros para usar read y leer.
+    mov eax, 3
+    mov ecx, edi
+    mov edx, ebx
+    mov ebx, 0+
+    int 0x80
+
+    mov esi, aex
+    mov byte [edi + esi], 0
+
+    ; Epílogo
     mov esp, ebp
     pop ebp
     ret
