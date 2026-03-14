@@ -12,14 +12,21 @@ global scan_char
 
 scan_char:
 
+    ; Prólogo
     push ebp
     mov ebp, esp
 
-    ; TODO:
-    ; 1. usar syscall read
-    ; 2. leer 1 byte desde stdin
-    ; 3. devolverlo en AL
+    ; Preparamos registros para usar read y leer.
+    mov eax, 3
+    mov ebx, 0
+    mov ecx, char_buffer
+    mov edx, 1
+    int 0x80
 
+    ; Movemos el caracter leído al registro AL.
+    mov al, [char_buffer]
+
+    ; Epílogo
     mov esp, ebp
     pop ebp
     ret
